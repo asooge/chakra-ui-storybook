@@ -1,37 +1,48 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import type { Story, Meta } from '@storybook/react';
 
-import { Button, ButtonProps } from './Button';
+import { PrimaryButton, PrimaryButtonTheme } from './Button';
+import type { PrimaryButtonProps } from './Button';
 
 export default {
   title: 'Example/Button',
-  component: Button,
+  component: PrimaryButton,
   argTypes: {
     backgroundColor: { control: 'color' },
+    theme: {
+      options: [PrimaryButtonTheme.default, PrimaryButtonTheme.red, PrimaryButtonTheme.white, PrimaryButtonTheme.black, PrimaryButtonTheme.transparent],
+      control: { type: 'radio' }
+    }
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<PrimaryButtonProps> = (args) => <PrimaryButton {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  label: 'Button',
+export const Default = Template.bind({});
+Default.args = {
+  theme: PrimaryButtonTheme.default,
+  children: 'Default',
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
+export const Red = Template.bind({});
+Red.args = {
+  theme: PrimaryButtonTheme.red,
+  children: 'Red',
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
+export const White = Template.bind({});
+White.args = {
+  theme: PrimaryButtonTheme.white,
+  children: 'White',
 };
 
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
+export const Black = Template.bind({});
+Black.args = {
+  theme: PrimaryButtonTheme.black,
+  children: 'Black',
+};
+
+export const Transparent = Template.bind({});
+Transparent.args = {
+  theme: PrimaryButtonTheme.transparent,
+  children: 'Transparent',
 };
